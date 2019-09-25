@@ -1,8 +1,17 @@
 // types
-import { TOGGLE_CART_DROPDOWN, ADD_ITEM } from '../types';
+import {
+  TOGGLE_CART_DROPDOWN,
+  ADD_ITEM,
+  DELETE_ITEM_FROM_CART,
+  DECREASE_ITEM
+} from '../types';
 
 // utils
-import { addItemToCart } from './cart.utils';
+import {
+  addItemToCart,
+  deleteItemFromCart,
+  decreaseItemFromCart
+} from './cart.utils';
 
 const INITIAL_STATE = {
   hidden: true,
@@ -20,6 +29,16 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, action.payload)
+      };
+    case DELETE_ITEM_FROM_CART:
+      return {
+        ...state,
+        cartItems: deleteItemFromCart(state.cartItems, action.payload)
+      };
+    case DECREASE_ITEM:
+      return {
+        ...state,
+        cartItems: decreaseItemFromCart(state.cartItems, action.payload)
       };
     default:
       return state;
