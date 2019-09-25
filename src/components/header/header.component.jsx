@@ -8,10 +8,14 @@ import './header.styles.scss';
 // logo svg
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
+//components
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 // redux
 import { connect } from 'react-redux';
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
   console.log('header log', currentUser);
   return (
     <div className='header'>
@@ -35,13 +39,17 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+
+        <CartIcon />
       </div>
+      {!hidden ? <CartDropdown /> : null}
     </div>
   );
 };
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-  currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden
 });
 
 export default connect(mapStateToProps)(Header);
