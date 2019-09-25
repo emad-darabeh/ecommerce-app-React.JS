@@ -8,7 +8,11 @@ import './header.styles.scss';
 // logo svg
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
+// redux
+import { connect } from 'react-redux';
+
 const Header = ({ currentUser }) => {
+  console.log('header log', currentUser);
   return (
     <div className='header'>
       <Link to='/' className='logo-container'>
@@ -36,4 +40,8 @@ const Header = ({ currentUser }) => {
   );
 };
 
-export default Header;
+const mapStateToProps = ({ user: { currentUser } }) => ({
+  currentUser
+});
+
+export default connect(mapStateToProps)(Header);
