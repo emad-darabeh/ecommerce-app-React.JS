@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
@@ -15,8 +15,8 @@ import Header from './components/header/header.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 // redux
-import { setCurrentUser } from './redux/user/user.actions';
 import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 
 // selector
 import { createStructuredSelector } from 'reselect';
@@ -45,7 +45,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -59,7 +59,7 @@ class App extends Component {
           />
           <Route exact path='/checkout' component={CheckoutPage} />
         </Switch>
-      </div>
+      </Fragment>
     );
   }
 }
