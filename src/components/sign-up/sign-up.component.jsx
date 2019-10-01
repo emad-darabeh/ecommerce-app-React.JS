@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-// style
-import './sign-up.styles.scss';
+// styled components
+import { SignUpContainer, SignUpTitle } from './sign-up.styles';
 
 // components
 import FormInput from '../form-input/form-input.component';
@@ -56,8 +56,8 @@ class SignUp extends Component {
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div className='sign-up'>
-        <h2 className='title'>I do not have an account</h2>
+      <SignUpContainer>
+        <SignUpTitle>I do not have an account</SignUpTitle>
         <span>Sign up with your email and password</span>
 
         <form onSubmit={this.handleSubmit} className='sign-up-form'>
@@ -100,7 +100,7 @@ class SignUp extends Component {
 
           <CustomButton type='submit'>Sign Up</CustomButton>
         </form>
-      </div>
+      </SignUpContainer>
     );
   }
 }

@@ -18,6 +18,10 @@ export const addItem = item => dispatch => {
   });
 };
 
+export const increaseItem = item => dispatch => {
+  dispatch(addItem(item));
+};
+
 export const deleteItem = item => dispatch => {
   dispatch({
     type: DELETE_ITEM_FROM_CART,

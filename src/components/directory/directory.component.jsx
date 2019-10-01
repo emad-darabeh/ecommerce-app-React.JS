@@ -3,8 +3,8 @@ import React from 'react';
 // components
 import MenuItem from '../menu-item/menu-item.component';
 
-// styles
-import './directory.styles.scss';
+// styled components
+import { DirectoryMenuContainer } from './directory.styles';
 
 // redux
 import { connect } from 'react-redux';
@@ -15,11 +15,11 @@ import { selectSections } from '../../redux/directory/directory.selectors';
 
 const Directory = ({ sections }) => {
   return (
-    <div className='directory-menu'>
+    <DirectoryMenuContainer>
       {sections.map(({ id, ...otherSectionProps }) => (
         <MenuItem key={id} {...otherSectionProps} />
       ))}
-    </div>
+    </DirectoryMenuContainer>
   );
 };
 

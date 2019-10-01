@@ -1,47 +1,49 @@
 import React from 'react';
 
-// style
-import './checkout-item.styles.scss';
+// styled components
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  TextContainer,
+  QuantityContainer,
+  DeleteButtonContainer
+} from './checkout-item.styles';
 
 // redux
 import { connect } from 'react-redux';
 import {
   deleteItem,
   decreaseItem,
-  addItem
+  increaseItem
 } from '../../redux/cart/cart.actions';
 
-const CheckoutItem = ({ item, deleteItem, decreaseItem, addItem }) => {
+const CheckoutItem = ({ item, deleteItem, decreaseItem, increaseItem }) => {
   const { name, price, imageUrl, quantity } = item;
   return (
-    <div className='checkout-item'>
-      <div className='image-container'>
+    <CheckoutItemContainer>
+      <ImageContainer>
         <img src={imageUrl} alt='cart item' />
-      </div>
+      </ImageContainer>
 
-      <span className='name'>{name}</span>
-      <span className='quantity'>
-        <div className='arrow' onClick={() => decreaseItem(item)}>
-          &#10094;
-        </div>
-        <span className='value'>{quantity}</span>
-        <div className='arrow' onClick={() => addItem(item)}>
-          &#10095;
-        </div>
-      </span>
-      <span className='price'>{price}</span>
+      <TextContainer>{name}</TextContainer>
+      <QuantityContainer>
+        <div onClick={() => decreaseItem(item)}>&#10094;</div>
+        <span>{quantity}</span>
+        <div onClick={() => increaseItem(item)}>&#10095;</div>
+      </QuantityContainer>
+      <TextContainer>{price}</TextContainer>
 
-      <div className='remove-button' onClick={() => deleteItem(item)}>
+      <DeleteButtonContainer onClick={() => deleteItem(item)}>
         &#10005;
-      </div>
-    </div>
+      </DeleteButtonContainer>
+    </CheckoutItemContainer>
   );
 };
 
 const mapActionsToProps = {
   deleteItem,
   decreaseItem,
-  addItem
+  increaseItem
 };
 
 export default connect(

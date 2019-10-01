@@ -23,11 +23,12 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 class App extends Component {
-  unSubscribeFromAuth = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapshot => {
@@ -40,7 +41,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.unSubscribeFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render() {
