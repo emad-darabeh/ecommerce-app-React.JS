@@ -2,8 +2,9 @@ import {
   TOGGLE_CART_DROPDOWN,
   ADD_ITEM,
   DELETE_ITEM_FROM_CART,
-  DECREASE_ITEM
-} from '../types';
+  DECREASE_ITEM,
+  CLEAR_CART
+} from './cart.types';
 
 export const toggleCartDropdown = () => dispatch => {
   dispatch({
@@ -38,4 +39,10 @@ export const decreaseItem = item => dispatch => {
       payload: item
     });
   }
+};
+
+export const clearCart = () => dispatch => {
+  dispatch({
+    type: CLEAR_CART
+  });
 };

@@ -1,8 +1,20 @@
-import { UPDATE_COLLECTIONS } from '../types';
+import {
+  FETCH_COLLECTIONS_START,
+  FETCH_COLLECTIONS_SUCCESS,
+  FETCH_COLLECTIONS_FAILURE
+} from './shop.types';
 
-export const updateCollections = collections => dispatch => {
+export const fetchCollectionsStart = () => dispatch => {
   dispatch({
-    type: UPDATE_COLLECTIONS,
-    payload: collections
+    type: FETCH_COLLECTIONS_START
   });
 };
+export const fetchCollectionsSuccess = collectionsMap => ({
+  type: FETCH_COLLECTIONS_SUCCESS,
+  payload: collectionsMap
+});
+
+export const fetchCollectionsFailure = errorMessage => ({
+  type: FETCH_COLLECTIONS_FAILURE,
+  payload: errorMessage
+});
