@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // styled components
 import {
@@ -23,4 +23,4 @@ const CartItem = ({ item: { name, price, imageUrl, quantity } }) => {
   );
 };
 
-export default CartItem;
+export default memo(CartItem);

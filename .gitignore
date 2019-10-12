@@ -6,6 +6,8 @@
 /client/.pnp
 /client/.pnp.js
 
+/graphql-ecommerce
+
 # testing
 /client/coverage
 
