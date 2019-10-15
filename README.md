@@ -1,6 +1,4 @@
-# ecommerce-app
-
-## E-Commerce App
+# E-Commerce App
 
 ### `preview this project`
 
