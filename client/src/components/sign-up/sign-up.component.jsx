@@ -33,7 +33,7 @@ const SignUp = ({ signUpStart }) => {
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    setUserCredentials({ [name]: value, ...userCredentials });
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (

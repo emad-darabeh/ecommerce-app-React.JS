@@ -33,7 +33,10 @@ const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   };
 
   const handleChange = ({ target: { name, value } }) => {
-    setUserCredentials({ [name]: value, ...userCredentials });
+    console.log('value:', value);
+    console.log('name:', name);
+
+    setUserCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
